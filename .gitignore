@@ -1,6 +1,5 @@
 .tscache
 node_modules
-dist
 tscommand
 npm-debug.log
 .awcache
