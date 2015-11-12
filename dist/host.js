@@ -1,5 +1,6 @@
 var fs = require('fs');
 var util = require('util');
+var path = require('path');
 var Promise = require('bluebird');
 var deps_1 = require('./deps');
 var helpers_1 = require('./helpers');
@@ -49,14 +50,14 @@ var Host = (function () {
         return this.state.options;
     };
     Host.prototype.getDefaultLibFileName = function (options) {
-        return options.target === 2 ?
+        return options.target === this.state.ts.ScriptTarget.ES6 ?
             this.state.compilerInfo.lib6.fileName :
             this.state.compilerInfo.lib5.fileName;
     };
     Host.prototype.resolveModuleNames = function (moduleNames, containingFile) {
         var resolvedModules = [];
-        for (var _i = 0; _i < moduleNames.length; _i++) {
-            var moduleName = moduleNames[_i];
+        for (var _i = 0, moduleNames_1 = moduleNames; _i < moduleNames_1.length; _i++) {
+            var moduleName = moduleNames_1[_i];
             var resolvedFileName = void 0;
             var resolvedModule = void 0;
             try {
@@ -99,7 +100,7 @@ var State = (function () {
         this.fileAnalyzer = new deps_1.FileAnalyzer(this);
         this.options = {};
         objectAssign(this.options, {
-            target: 1,
+            target: this.ts.ScriptTarget.ES5,
             sourceMap: true,
             verbose: false
         });
@@ -108,7 +109,7 @@ var State = (function () {
             this.addFile(RUNTIME.fileName, RUNTIME.text);
         }
         if (!this.options.noLib) {
-            if (this.options.target === 2 || this.options.library === 'es6') {
+            if (this.options.target === this.ts.ScriptTarget.ES6 || this.options.library === 'es6') {
                 this.addFile(this.compilerInfo.lib6.fileName, this.compilerInfo.lib6.text);
             }
             else {
@@ -230,8 +231,8 @@ var State = (function () {
         var text = this.readFileSync(fileName);
         return this.updateFile(fileName, text, checked);
     };
-    State.prototype.normalizePath = function (path) {
-        return this.ts.normalizePath(path);
+    State.prototype.normalizePath = function (filePath) {
+        return path.normalize(filePath);
     };
     return State;
 })();

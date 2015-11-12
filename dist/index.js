@@ -183,10 +183,10 @@ function ensureInstance(webpack, options, instanceName) {
     if (typeof options.jsx !== 'undefined') {
         switch (options.jsx) {
             case 'react':
-                options.jsx = 2;
+                options.jsx = tsImpl.JsxEmit.React;
                 break;
             case 'preserve':
-                options.jsx = 1;
+                options.jsx = tsImpl.JsxEmit.Preserve;
                 break;
         }
     }

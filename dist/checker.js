@@ -33,14 +33,14 @@ var Host = (function () {
     };
     Host.prototype.resolveModuleNames = function (moduleNames, containingFile) {
         var resolvedModules = [];
-        for (var _i = 0; _i < moduleNames.length; _i++) {
-            var moduleName = moduleNames[_i];
+        for (var _i = 0, moduleNames_1 = moduleNames; _i < moduleNames_1.length; _i++) {
+            var moduleName = moduleNames_1[_i];
             resolvedModules.push(env.resolutionCache[(containingFile + "::" + moduleName)]);
         }
         return resolvedModules;
     };
     Host.prototype.getDefaultLibFileName = function (options) {
-        return options.target === 2 ?
+        return options.target === env.compiler.ScriptTarget.ES6 ?
             env.compilerInfo.lib6.fileName :
             env.compilerInfo.lib5.fileName;
     };

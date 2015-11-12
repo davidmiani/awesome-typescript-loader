@@ -33,13 +33,13 @@ function parseOptionTarget(target, tsInst) {
     target = target.toLowerCase();
     switch (target) {
         case 'es3':
-            return 0;
+            return tsInst.ScriptTarget.ES3;
         case 'es5':
-            return 1;
+            return tsInst.ScriptTarget.ES5;
         case 'es6':
-            return 2;
+            return tsInst.ScriptTarget.ES6;
         case 'latest':
-            return 2;
+            return tsInst.ScriptTarget.Latest;
     }
 }
 exports.parseOptionTarget = parseOptionTarget;
