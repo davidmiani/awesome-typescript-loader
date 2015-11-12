@@ -205,8 +205,8 @@ function ensureInstance(webpack: IWebPack, options: ICompilerOptions, instanceNa
     }
     if (typeof options.moduleResolution === "string") {
        var moduleTypes = {
-           "node": tsImpl.ModuleResolutionKind.NodeJs,
-           "classic": tsImpl.ModuleResolutionKind.Classic
+           "node": 2,
+           "classic": 1
        };
         options.moduleResolution = moduleTypes[options.moduleResolution];
 
