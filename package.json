@@ -1,6 +1,6 @@
 {
   "name": "awesome-typescript-loader",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "Awesome TS loader for webpack",
   "main": "dist/index.js",
   "scripts": {
@@ -42,6 +42,6 @@
     "grunt-shell": "^1.1.2",
     "grunt-ts": "^3.0.0",
     "load-grunt-tasks": "^0.6.0",
-    "typescript": "^1.7.0-dev.20151006"
+    "typescript": "^1.8.0-dev.20151031"
   }
 }
